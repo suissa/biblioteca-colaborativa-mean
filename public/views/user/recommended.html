@@ -1,0 +1,23 @@
+<section class="row-fluid footer-container span12" data-ng-controller="BooksController" data-ng-init="recommended(global.school)">
+  
+    <ul class="thumbnails" ng-show="global.books.length" data-ng-show="global.hasSchool">
+      <h3>Recomendados para você</h3>
+      <li class="span2  well" data-ng-repeat="book in recommendedBooks | recommended:global.school">
+        <div class="thumbnail thumb-li">
+            <div class="status {{ book.status }}" popover="{{ book.status }}" popover-placement="bottom" popover-trigger="mouseenter"></div>
+            <img src="{{book.img}}" alt="" width="140" height="190" align="center">
+            <h5 style="height: 70px !important"><a data-ng-href="#!/books/{{book._id}}">{{book.title}}</a></h5>
+            <p >
+              @ {{book.user.name}}
+              <br />
+              <strong style="color: #00bb22">{{ book.school }}</strong>
+
+            </p>
+            <a href="#!/deals/create/{{ book._id }}" data-ng-click="create(book._id)" class="btn-deal pull-left">NEGOCIAR</a>
+        </div>
+      </li>
+    </ul>
+  <section data-ng-hide="global.hasSchool">
+    <p><center>Não há livros recomendados em sua faculdade ;-(</center></p>
+  </section>
+</section>

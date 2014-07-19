@@ -1,0 +1,45 @@
+<div class="search-bar span10 nav pull-left" data-ng-controller="BooksController" >
+  <h4>Acervo Universitário</h4>
+
+  <input ng-model="q.$" type="text" class="span6" placeholder="pesquise por titulo, categoria, universidade ou autor">
+  <button class="btn-search" data-ng-click="mainSearch(q)"></button>
+  <button class="btn-filter" data-ng-click="toggleCat()"></button>
+ 
+    
+    <div class="category-container span8" data-ng-hide="c" data-ng-animate="'animate'">
+        <ul class="nav categories-wrapper">
+          <li ><a href="#!/books/search?q=Ciências Exatas">Ciências Exatas</a></li>
+          <li ><a href="#!/books/search?q=Direito">Direito</a></li>
+          <li ><a href="#!/books/search?q=Informática">Informatica</a></li>
+          <li ><a href="#!/books/search?q=Filosofia">Filosofia</a></li>
+          <li ><a href="#!/books/search?q=Dicionários">Dicionários</a></li>
+          <li ><a href="#!/books/search?q=Arte">Arte</a></li>
+          <li ><a href="#!/books/search?q=Saúde">Saúde</a></li>
+          <li ><a href="#!/books/search?q=Negócios">Negócios</a></li>
+          <li ><a href="#!/books/search?q=Ciências Humanas">Ciências Humanas</a></li>
+          <li ><a href="#!/books/search?q=Apostila">Apostila</a></li>
+          <li ><a href="#!/books/search?q=Engenharia">Engenharia</a></li>
+          <li ><a href="#!/books/search?q=Outros">Outros</a></li>
+  
+        </ul>
+
+    </div>
+
+</div>
+<section data-ng-controller="BooksController" data-ng-init="find()">
+	<ul class="thumbnails">
+		<li class="span3" data-ng-repeat="book in books">
+      <a href="#" ng-click="remove(book)" class="btn btn-danger pull-right"><i class="icon icon-white icon-remove"></i></a>
+		  <div class="thumbnail">
+		      <img src="{{ book.img }}" alt="" width="300" height="200">
+		      <h3><a data-ng-href="#!/books/{{book._id}}">{{book.title}}</a></h3>
+		      <p>
+            {{book.description}}
+            <br />
+            {{book.price | currency: "R$ "}}
+          </p>
+          <small>por <i>{{ book.author }}</i></small>
+		  </div>
+		</li>
+	</ul>
+</section>

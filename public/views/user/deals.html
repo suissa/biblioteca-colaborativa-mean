@@ -1,0 +1,49 @@
+<div class="search-bar span10 nav pull-left" data-ng-controller="BooksController" >
+  <h4>Acervo Universitário</h4>
+
+  <input ng-model="q.$" type="text" class="span6" placeholder="pesquise por titulo, categoria, universidade ou autor">
+  <button class="btn-search" data-ng-click="mainSearch(q)"></button>
+  <button class="btn-filter" data-ng-click="toggleCat()"></button>
+ 
+    
+    <div class="category-container span8" data-ng-hide="c" data-ng-animate="'animate'">
+        <ul class="nav">
+          <li ><a href="#!/books/search?q=Ciências Exatas">Ciências Exatas</a></li>
+          <li ><a href="#!/books/search?q=Direito">Direito</a></li>
+          <li ><a href="#!/books/search?q=Informática">Informatica</a></li>
+          <li ><a href="#!/books/search?q=Filosofia">Filosofia</a></li>
+          <li ><a href="#!/books/search?q=Dicionários">Dicionários</a></li>
+          <li ><a href="#!/books/search?q=Arte">Arte</a></li>
+          <li ><a href="#!/books/search?q=Saúde">Saúde</a></li>
+          <li ><a href="#!/books/search?q=Negócios">Negócios</a></li>
+          <li ><a href="#!/books/search?q=Ciências Humanas">Ciências Humanas</a></li>
+          <li ><a href="#!/books/search?q=Apostila">Apostila</a></li>
+          <li ><a href="#!/books/search?q=Engenharia">Engenharia</a></li>
+          <li ><a href="#!/books/search?q=Outros">Outros</a></li>
+  
+        </ul>
+
+    </div>
+
+</div>
+<section data-ng-controller="DealsController" data-ng-init="find()">
+  <ul class="thumbnails">
+    
+    <li class="span2  well" data-ng-repeat="deal in deals">
+      <a href="#" ng-click="remove(deal)" class="btn btn-danger btn-mini pull-right"><i class="icon icon-white icon-remove"></i></a>
+      <div class="thumbnail thumb-li">
+
+          <img src="{{deal.book.img}}" alt="" width="140" height="190" align="center">
+          <h5><a data-ng-href="#!/books/{{book._id}}">{{deal.book.title}}</a></h5>
+          <p >
+            @ {{deal.book.user.name}}
+            <br />
+            <strong>{{ deal.book.school }}</strong>
+            <small><a href="#!/deals/{{deal._id}}">{{ deal.comments.length }} interações</a></i></small>
+          </p>
+          
+          <img src="/img/icons/negociar.png" alt="" width="20" style="height: 20px !important; float: left; margin-left: 20px !important" ><a href="#!/deals/{{deal._id}}" class="btn-deal pull-left">FINALIZAR</a>
+      </div>
+    </li>
+  </ul>
+</section>

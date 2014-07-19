@@ -1,0 +1,51 @@
+<div class="search-bar span10 nav pull-left" data-ng-controller="BooksController" >
+  <h4>Acervo Universitário</h4>
+
+  <input ng-model="q.$" type="text" class="span6" placeholder="pesquise por titulo, categoria, universidade ou autor">
+  <button class="btn-search" data-ng-click="mainSearch(q)"></button>
+  <button class="btn-filter" data-ng-click="toggleCat()"></button>
+ 
+    
+    <div class="category-container span8" data-ng-hide="c" data-ng-animate="'animate'">
+        <ul class="nav categories-wrapper">
+          <li ><a href="#!/books/search?q=Ciências Exatas">Ciências Exatas</a></li>
+          <li ><a href="#!/books/search?q=Direito">Direito</a></li>
+          <li ><a href="#!/books/search?q=Informática">Informatica</a></li>
+          <li ><a href="#!/books/search?q=Filosofia">Filosofia</a></li>
+          <li ><a href="#!/books/search?q=Dicionários">Dicionários</a></li>
+          <li ><a href="#!/books/search?q=Arte">Arte</a></li>
+          <li ><a href="#!/books/search?q=Saúde">Saúde</a></li>
+          <li ><a href="#!/books/search?q=Negócios">Negócios</a></li>
+          <li ><a href="#!/books/search?q=Ciências Humanas">Ciências Humanas</a></li>
+          <li ><a href="#!/books/search?q=Apostila">Apostila</a></li>
+          <li ><a href="#!/books/search?q=Engenharia">Engenharia</a></li>
+          <li ><a href="#!/books/search?q=Outros">Outros</a></li>
+  
+        </ul>
+
+    </div>
+
+</div>
+<section data-ng-controller="BooksController" data-ng-init="search()">
+
+  <div class="alert alert-info" data-ng-hide="global.user.school || !global.authenticated">
+    <strong>Importante: </strong> alguns campos em seu cadastro precisam ser preenchidos! Para completá-lo, clique <a href="#!/account">aqui.</a>
+  </div>
+  <ul class="thumbnails" ng-show="global.books.length">
+    <li class="span2  well" data-ng-repeat="book in books | filter:q">
+      <div class="thumbnail thumb-li">
+          <img src="{{book.img}}" alt="" width="140" height="190" align="center">
+          <h5><a data-ng-href="#!/books/{{book._id}}">{{book.title}}</a></h5>
+          <p >
+            @ {{book.user.name}}
+            <br />
+            <strong style="color: #00bb22">{{ book.school }}</strong>
+
+          </p>
+          <a href="#!/deals/create/{{ book._id }}" data-ng-click="create(book._id)" class="btn-deal pull-left">NEGOCIAR</a>
+      </div>
+    </li>
+  </ul>
+  <h3 align="center" ng-hide="global.books.length">Não há livros cadastrados</h3>
+</section>
+

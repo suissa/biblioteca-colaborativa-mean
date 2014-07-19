@@ -1,0 +1,47 @@
+<section data-ng-controller="MsgsController" data-ng-init="msgs()">
+  <h3>Mensagens</h3>
+
+  <div class="msgs-container" data-ng-show="msgs.length">
+    <tabset>
+      <tab heading="Não lidas" >
+        <div class="msg-box well span10" data-ng-repeat="msg in msgs | msgNotRead:global.user._id">
+          <a  class="btn btn-mini btn-danger pull-right" data-ng-click="remove(msg)"><i class="icon icon-white icon-remove"></i></a>
+          <h4><strong>{{ msg.from.name }} - Livro: {{ msg.book.title }}</strong></h4>
+          
+          <p>{{ msg.msg }}</p>
+          <a data-ng-click="markAsRead(msg._id)" class="btn pull-left">Marcar como lida</a>
+
+          <div class="reply-container" >
+            <a data-ng-click="toggleCustom()" class="btn">Responder</a>
+            <div class="reply-form" ng-hide="custom">
+              <p class="alert alert-success" data-ng-show="info">{{ info }}</p>
+              <textarea data-ng-model="comment" class="span10"></textarea>
+              <button class="btn btn-primary pull-right" data-ng-click="reply(msg, comment)">Responder Mensagem</button>
+            </div> 
+          </div>
+        </div>  
+      </tab>
+      <tab heading="Lidas">
+        <div class="msg-box well span10" data-ng-repeat="msg in umsgs | msgRead:global.user._id">
+          <a  class="btn btn-mini btn-danger pull-right" data-ng-click="remove(msg)"><i class="icon icon-white icon-remove"></i></a>
+          <h4><strong>{{ msg.from.name }} - Livro: {{ msg.book.title }}</strong></h4>
+          
+          <p>{{ msg.msg }}</p>
+          <a data-ng-click="markAsUnread(msg._id)" class="btn pull-left">Marcar como não lida</a>
+
+          <div class="reply-container" data-ng-controller="MsgsController">
+            <a data-ng-click="toggleCustom()" class="btn">Responder</a>
+            <div class="reply-form" ng-hide="custom">
+              <br />
+              <textarea data-ng-model="comment" class="span10"></textarea>
+              <button class="btn btn-primary pull-right" data-ng-click="reply(msg, comment)">Responder Mensagem</button>
+            </div> 
+          </div>
+        </div>
+      </tab>
+    </tabset>
+  </div>
+  <div class="msgs-container" data-ng-hide="msgs.length">
+    <p>Não há mensagens a serem lidas.</p>
+  </div>
+</section>

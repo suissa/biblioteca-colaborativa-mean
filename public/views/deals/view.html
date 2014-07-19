@@ -1,0 +1,66 @@
+<div class="search-bar span10 nav pull-left" data-ng-controller="BooksController" >
+  <h4>Acervo Universitário</h4>
+
+  <input ng-model="q.$" type="text" class="span6" placeholder="pesquise por titulo, categoria, universidade ou autor">
+  <button class="btn-search" data-ng-click="mainSearch(q)"></button>
+  <button class="btn-filter" data-ng-click="toggleCat()"></button>
+ 
+    
+    <div class="category-container span8" data-ng-hide="c" data-ng-animate="'animate'">
+        <ul class="nav">
+          <li ><a href="#!/books/search?q=Ciências Exatas">Ciências Exatas</a></li>
+          <li ><a href="#!/books/search?q=Direito">Direito</a></li>
+          <li ><a href="#!/books/search?q=Informática">Informatica</a></li>
+          <li ><a href="#!/books/search?q=Filosofia">Filosofia</a></li>
+          <li ><a href="#!/books/search?q=Dicionários">Dicionários</a></li>
+          <li ><a href="#!/books/search?q=Arte">Arte</a></li>
+          <li ><a href="#!/books/search?q=Saúde">Saúde</a></li>
+          <li ><a href="#!/books/search?q=Negócios">Negócios</a></li>
+          <li ><a href="#!/books/search?q=Ciências Humanas">Ciências Humanas</a></li>
+          <li ><a href="#!/books/search?q=Apostila">Apostila</a></li>
+          <li ><a href="#!/books/search?q=Engenharia">Engenharia</a></li>
+          <li ><a href="#!/books/search?q=Outros">Outros</a></li>
+  
+        </ul>
+
+    </div>
+
+</div>
+<section data-ng-controller="DealsController" class="deal-container span10" data-ng-init="findOne()">
+  <h3 align="center">Fechar Negociação</h3>
+  <div class="pull-left deal-book-container well">
+    <img src="{{deal.book.img}}"  class="book-img pull-left">
+    <p><a data-ng-href="#!/deals/{{deal._id}}"><strong>{{deal.book.title}}</strong/></a></p>
+    <p>
+      {{deal.book.description}}
+      <br /> 
+    </p>
+    <p><strong>Valor: </strong> {{deal.book.price | currency: "R$ "}}</p>
+    <small>por <i>{{ deal.book.author }}</i></small>
+  </div>
+  <div class=" pull-left">
+    <div class="comment-form span4 pull-left">
+      <form data-ng-submit="commentDeal()">
+        <p class="alert alert-success" ng-show="post_msg">{{ post_msg }}</p>
+        <p class="well"><strong>Nome:</strong> {{ deal.requester.name }}</p>
+        <p class="well"><strong>Faculdade:</strong> {{ deal.requester.school }}</p>
+        <p class="well"><strong>Telefone:</strong> {{ deal.requester.phone }}</p>
+        <textarea data-ng-model="comment" class="block span4" id="" cols="30" rows="5" placeholder="Deixe um comentário..">
+          
+        </textarea>
+        <br />
+    
+        <input type="submit" value="Deixe um Comentário" class="btn pull-right">
+      </form>
+    </div>
+    <div class="span4 comment-box">
+      <h4 align="center">Sobre o Usuário</h4>
+      <img src="{{ deal.requested.img }}" alt="">
+      <p></p>
+      <p><strong>Nome: </strong>{{ deal.requested.name }}</p>
+      <p><strong>Curso: </strong>{{ deal.requested.school }}</p>
+    </div>
+    
+  </div>
+    
+</section>

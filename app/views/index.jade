@@ -1,0 +1,35 @@
+extends layouts/default
+
+block content
+  section(data-ng-view)
+  section(class="main-nav")
+    ul
+      li
+        .wrapper-icon
+          img(src="/img/icons/cadastro.png")   
+        a(href="/signup") 
+          //- i.icon.icon-cadastrar
+          | Cadastrar-se
+ 
+      li
+        .wrapper-icon
+          img(src="/img/icons/negociar.png", style="margin-left: -8px;")      
+        a(href="/signup") Negociar Livro
+          //- i.icon.icon-cadastrar    
+      li
+        .wrapper-icon
+          img(src="/img/icons/como-funciona.png")    
+        a(href="/#!/how-it-works") Como Funciona
+          //- i.icon.icon-cadastrar     
+      li
+        .wrapper-icon
+          img(src="/img/icons/sobre.png") 
+        a(href="/#!/about") Sobre
+          //- i.icon.icon-cadastrar  
+      li
+        .wrapper-icon
+          img(src="/img/icons/contato.png")  
+        a(href="#book-a") Contato
+          //- i.icon.icon-cadastrar 
+  script(type="text/javascript").
+    window.user = !{user};

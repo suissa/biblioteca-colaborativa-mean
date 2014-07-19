@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = false
+[remote "origin"]
+	url = git@bitbucket.org:suissa/acervouniversitario.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "deploy"]
+	url = root@162.243.41.172:/root/acervo.git
+	fetch = +refs/heads/*:refs/remotes/deploy/*

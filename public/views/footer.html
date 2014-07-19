@@ -1,0 +1,9 @@
+<section class="row-fluid footer-container span12 recomendados-wrapper" data-ng-controller="BooksController" data-ng-init="recommended(global.school)">
+  <div class="recommended-container span7" data-ng-show="global.hasSchool"  >
+    <h3>Recomendados para você</h3>
+    <div data-ng-repeat="book in recommendedBooks | recommended:global.school">
+      <img src="{{ book.img }}" width="50" height="50" alt="">
+      <p align="center"><a href="#!/books/{{ book._id }}">{{ book.title }}</a></p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+extends auth
+
+block auth
+  section(class="main-nav")
+    ul
+      li
+        a(href="#!/signup") Cadastrar-se
+          img(src="/img/icons/cadastro.png", align="left")
+      li
+        a(href="#!/signup") Negociar Livro
+          img(src="/img/icons/negociar.png", align="left", height="2")
+      li
+        a(href="#book-a") Como Funciona
+          img(src="/img/icons/como-funciona.png", align="left")
+      li
+        a(href="#book-a") Sobre
+          img(src="/img/icons/sobre.png", align="left")
+      li
+        a(href="#book-a") Contato
+          img(src="/img/icons/contato.png", align="left")
+  form.signin.form-horizontal(action="/users/session", method="post")
+    p.error= message
+    .control-group
+      label.control-label(for='email') Email
+      .controls
+        input#email(type='text', name="email", placeholder='Email')
+
+    .control-group
+      label.control-label(for='password') Senha
+      .controls
+        input#password(type='password', name="password", placeholder='Senha')
+
+    .form-actions
+      button.btn.btn-primary(type='submit') Login
+      &nbsp;
+      | ou&nbsp;
+      a.show-signup(href="/signup") Inscrever-se

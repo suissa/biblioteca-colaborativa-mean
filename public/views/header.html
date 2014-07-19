@@ -1,0 +1,60 @@
+<div class="navbar-inner" data-ng-controller="HeaderController" data-ng-init="init()">
+	<ul class="nav logo pull-left">
+		<li>
+			<a class="brand" href="/">
+				<img src="img/coruja_100.png" alt="Voltar para a pagina inicial">
+			</a>
+		</li>
+		<li data-ng-repeat="item in menu" data-ng-show="global.user" data-ng-class="{active: isSelected(item)}"><a href="#/{{item.link}}">{{item.title}}</a></li>
+	</ul>
+	<ul class="user-settings pull-right" data-ng-hide="global.authenticated">
+		<li><a href="/auth/facebook" class="btn-social btn-dblue btn-block">Login <img src="/img/icons/facebook.png" alt=""></a></li>
+		<li><a href="/auth/twitter" class="btn-social btn-lblue btn-block">Login<img src="/img/icons/tt.png" alt=""></a></li>
+		<li><a href="signin" class="btn-social btn-orange btn-block">Login <img src="/img/icons/au.png" alt=""></a></li>
+	</ul>
+	
+	
+	<ul class="nav nav-alt pull-right" data-ng-show="global.authenticated">
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle brand" data-toggle="dropdown">
+				{{global.user.name | split}} <b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<li ><a href="/#!/account">Minha Conta</a></li>
+				<li ><a href="/#!/account/deals">Minhas Negociações</a></li>
+				<li ><a href="/signout">Sair</a></li>
+			</ul>
+		</li>
+	</ul>
+
+
+	<div class="user-info nav pull-right" data-ng-show="global.authenticated">
+		<img src="https://graph.facebook.com/{{global.user.username}}/picture" alt="" class="avatar" data-ng-hide="global.providerTwitter || global.localFacebook">
+		<img src="{{global.user.twitter.profile_image_url}}" alt="" class="avatar" data-ng-hide="global.providerFacebook || global.localFacebook">
+		<img src="{{ global.user.img }}" alt="" class="avatar" data-ng-hide="global.providerFacebook || global.providerTwitter">
+	</div>
+
+		<!--<ul class="nav nav-alt pull-left">
+		{{ categories.length }}
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle brand" data-toggle="dropdown">
+				Categorias <b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu" >
+				<li ><a href="#!/books/search?q=Ciências Exatas">Ciências Exatas</a></li>
+				<li ><a href="#!/books/search?q=Direito">Direito</a></li>
+				<li ><a href="#!/books/search?q=Informática">Informatica</a></li>
+				<li ><a href="#!/books/search?q=Filosofia">Filosofia</a></li>
+				<li ><a href="#!/books/search?q=Dicionários">Dicionários</a></li>
+				<li ><a href="#!/books/search?q=Arte">Arte</a></li>
+				<li ><a href="#!/books/search?q=Saúde">Saúde</a></li>
+				<li ><a href="#!/books/search?q=Negócios">Negócios</a></li>
+				<li ><a href="#!/books/search?q=Ciências Humanas">Ciências Humanas</a></li>
+				<li ><a href="#!/books/search?q=Apostila">Apostila</a></li>
+				<li ><a href="#!/books/search?q=Engenharia">Engenharia</a></li>
+				<li ><a href="#!/books/search?q=Outros">Outros</a></li>
+			</ul>
+		</li>
+	</ul>-->
+	
+</div>

@@ -1,0 +1,26 @@
+extends ../layouts/default
+
+block content
+  section(class="main-nav")
+    ul
+      li
+        a(href="#book-a") Como Funciona
+      li
+        a(href="#book-a") Sobre
+      li
+        a(href="#book-a") Contato
+  .row
+    .offset1.span4
+      
+    .offset1.span4
+    
+    .span10.form-container
+      h1(style="margin-left: 360px") Login
+      if (typeof errors !== 'undefined')
+        .fade.in.alert.alert-block.alert-error
+          a.close(data-dismiss="alert", href="javascript:void(0)") x
+          ul
+            each error in errors
+              li= error.type
+
+      block auth
