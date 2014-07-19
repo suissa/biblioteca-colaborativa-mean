@@ -1,0 +1,38 @@
+<section data-ng-controller="BooksController" data-ng-init="findOne()">
+	<form class="form-horizontal" data-ng-submit="update()">
+		<fieldset class="span6">
+			<div class="control-group">
+				<label class="control-label" for="title">Título</label>
+
+				<div class="controls">
+					<input type="text" data-ng-model="book.title" id="title" placeholder="Título">
+					</input>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="description">Descrição</label>
+
+				<div class="controls">
+					<textarea data-ng-model="book.description" id="description" cols="30" rows="10" placeholder="Content">
+					</textarea>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<input type="submit" class="btn">
+				</div>
+			</div>
+		</fieldset>
+		<fieldset class="span6">
+			<div class="span6 pull-right">
+	      <label for="inputImage">Image</label>
+	      
+	      <input id="inputImage" type="file" accept="image/*" image="image" />
+	      
+	      <img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/> 
+	      <input type="hidden" data-ng-model="book.img" value="{{uploadedImgSrc}}" alt="">
+	      <button type="button" class="btn btn-primary" ng-click="single(image)">+</button>
+	    </div>
+	  </fieldset>
+	</form>
+</section>

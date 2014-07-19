@@ -1,0 +1,25 @@
+/* icons */
+/*.icon {
+  display: inline-block;
+  float: left;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+  
+}*/
+.icon-menu {
+  display: inline-block;
+  float: left;
+}
+.icon-cadastar {
+  background-image: url('/img/icons/cadastro.png');
+  width: 32px;
+  height: 44px;
+}
+
+
+.categories-wrapper {
+  max-width: 800px;
+  min-width: 400px;
+}

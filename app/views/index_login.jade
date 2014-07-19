@@ -1,0 +1,39 @@
+extends layouts/default
+
+block content
+  section(data-ng-view)
+  section(class="main-nav")
+    ul
+      li(style="margin-left: 8px")
+        a(href="#!/books/create", class="btn btn-red btn-mini") +Livro
+      li
+        .wrapper-icon
+          img(src="/img/icons/btn-livros.png", align="left")
+        a(href="#!/account/books") Meus Livros
+      li
+        .wrapper-icon
+          img(src="/img/icons/btn-rastreio.png", align="left", height="2")
+        a(href="#!/tracking") Rastrear 
+      li
+        .wrapper-icon
+          img(src="/img/icons/btn-msg.png", align="left", style="margin-top: 10px")
+        a(href="#!/account/msgs") Mensagens 
+          span.badge-msgs.badge !{msgs}  
+      li
+        .wrapper-icon
+          img(src="/img/icons/btn-config.png", align="left")
+        a(href="#!/config") Configurações 
+      li
+        .wrapper-icon
+          img(src="/img/icons/btn-account.png", align="left")
+        a(href="#!/account") Minha Conta
+      li
+        .wrapper-icon
+          img(src="/img/icons/recommended.png", align="left", style="margin-left: -4px")
+        a(href="#!/account/recommended") Recomendados
+      li
+        .wrapper-icon
+          img(src="/img/icons/btn-logout.png", align="left")
+        a(href="signout") Logout
+  script(type="text/javascript").
+    window.user = !{user};

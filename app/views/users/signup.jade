@@ -1,0 +1,51 @@
+extends auth
+
+block auth
+  section(class="main-nav")
+    ul
+      li
+        a(href="#!/signup") Cadastrar-se
+          img(src="/img/icons/cadastro.png", align="left")
+      li
+        a(href="#!/signup") Negociar Livro
+          img(src="/img/icons/negociar.png", align="left", height="2")
+      li
+        a(href="#book-a") Como Funciona
+          img(src="/img/icons/como-funciona.png", align="left")
+      li
+        a(href="#book-a") Sobre
+          img(src="/img/icons/sobre.png", align="left")
+      li
+        a(href="#book-a") Contato
+          img(src="/img/icons/contato.png", align="left")
+  form.signup.signup-form.form-one.span4(action="/users", method="post")
+    small caso ainda não possua uma conta ou não queria fazer login com as redes sociais, cadastre-se abaixo
+    .control-group
+      .controls
+        input#email(type='text', name="email", placeholder='Email', value=user.email, class="span3")
+    .control-group
+      .controls
+        input#password(type='password', name="password", placeholder='Senha', class="span3")
+    .control-group
+      .controls
+        input#password_c(type='password', name="c_password", placeholder='Confirmar Senha', class="span3")
+
+      button.btn-alt.btn-orange(type='reset') Limpar
+
+      button.btn-alt.btn-green.btn-cadastrar(type='submit', class="btn-signup") Cadastrar
+  form.signup.signup-form.span4(action="/users/session", method="post")
+    a.btn-social.btn-dblue.btn-block(href="/auth/facebook") Logar com 
+      img(src="/img/icons/facebook.png")
+    a.btn-social.btn-lblue.btn-block(href="/auth/twitter") Logar com
+      img(src="/img/icons/tt.png")
+    br
+    .control-group
+      .controls
+        input#email(type='text', name="email", placeholder='Email', value=user.email, class="span3")
+    .control-group
+      .controls
+        input#password(type='password', name="password", placeholder='Senha', class="span3")
+
+      button.btn-alt.btn-orange(type='reset') Limpar
+
+      button.btn-alt.btn-green(type='submit', class="btn-signup") Login

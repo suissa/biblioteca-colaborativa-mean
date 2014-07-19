@@ -1,0 +1,84 @@
+<div class="search-bar span10 nav pull-left" data-ng-controller="BooksController" >
+  <h4>Acervo Universitário</h4>
+
+  <input ng-model="q.$" type="text" class="span6" placeholder="pesquise por titulo, categoria, universidade ou autor">
+  <button class="btn-search" data-ng-click="mainSearch(q)"></button>
+  <button class="btn-filter" data-ng-click="toggleCat()"></button>
+ 
+    
+    <div class="category-container span8" data-ng-hide="c" data-ng-animate="'animate'">
+        <ul class="nav">
+          <li ><a href="#!/books/search?q=Ciências Exatas">Ciências Exatas</a></li>
+          <li ><a href="#!/books/search?q=Direito">Direito</a></li>
+          <li ><a href="#!/books/search?q=Informática">Informatica</a></li>
+          <li ><a href="#!/books/search?q=Filosofia">Filosofia</a></li>
+          <li ><a href="#!/books/search?q=Dicionários">Dicionários</a></li>
+          <li ><a href="#!/books/search?q=Arte">Arte</a></li>
+          <li ><a href="#!/books/search?q=Saúde">Saúde</a></li>
+          <li ><a href="#!/books/search?q=Negócios">Negócios</a></li>
+          <li ><a href="#!/books/search?q=Ciências Humanas">Ciências Humanas</a></li>
+          <li ><a href="#!/books/search?q=Apostila">Apostila</a></li>
+          <li ><a href="#!/books/search?q=Engenharia">Engenharia</a></li>
+          <li ><a href="#!/books/search?q=Outros">Outros</a></li>
+  
+        </ul>
+
+    </div>
+
+</div>
+<section data-ng-controller="UsersController" data-ng-init="me()">
+  <div class="user-data span5">
+    <h2>Meus Dados</h2>
+    <form  action="/users/{{global.user._id}}" method="post">
+      <label for="">Nome</label>
+      <input type="text" name="name" value="{{global.user.name}}" />
+      <label for="">Email</label>
+     <input type="text" name="email" value="{{global.user.email}}" />
+      <label for="">Usuário</label>
+      <input type="text" name="username" value="{{global.user.username}}" />
+ 
+      <label>Faculdade: <strong>{{ global.user.school }}</strong></label>
+        <input type="text" data-ng-model="school" ng-value="{{ global.user.school }}" value="{{ global.user.school }}" name="school" typeahead="school.sign for school in schools | filter:$viewValue | limitTo:99" autocomplete="off">
+      <label for="">Telefone</label>
+      <input type="text" name="phone" value="{{ global.user.phone }}">
+      <div class="control-group">
+        <br />
+        <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+      </div>
+      <input type="hidden" name="img" value="{{global.user.img}}">
+    </form>
+  </div>
+  <div class="profile-img span5" data-ng-controller="UsersController">
+    <label for="">Imagem</label>
+    <img src="{{ global.user.img }}" alt="">
+        
+    <input id="inputImage" type="file" accept="image/*" image="image" resize-max-height="120"
+            resize-max-width="90"
+            resize-quality="0.7"  />
+    <a data-ng-click="create(image)" class="btn" data-ng-show="image">Adicionar</a>
+
+    <img ng-show="image" ng-src="{{image.resized.dataURL}}" type="{{image.file.type}}" class="img-demo"/> 
+    <p></p>
+
+  </div>
+  <hr />
+  <div class="books">
+    <h2>Meus Livros</h2>
+    <br /><br />
+    <ul class="thumbnails" data-ng-controller="BooksController">
+    
+    <li class="span2  well" data-ng-repeat="book in bookList | filter:q">
+      <a href="#"  data-ng-click="remove(book)" class="btn btn-danger btn-mini pull-right" style="background: #ff0000 !important"><i class="icon icon-white icon-remove"></i></a>
+      <div class="thumbnail thumb-li">
+          <img src="{{book.img}}" alt="" width="100" height="100" align="center">
+          <h5><a data-ng-href="#!/books/{{book._id}}">{{book.title}}</a></h5>
+          <p>
+            @ {{book.user.name}}
+            <br />
+            {{ book.school }}
+          </p>
+      </div>
+    </li>
+  </ul>
+  </div>
+</section>

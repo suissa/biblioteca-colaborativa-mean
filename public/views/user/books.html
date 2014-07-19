@@ -1,0 +1,53 @@
+<div class="search-bar span10 nav pull-left" data-ng-controller="BooksController" >
+  <h4>Acervo Universitário</h4>
+
+  <input ng-model="q.$" type="text" class="span6" placeholder="pesquise por titulo, categoria, universidade ou autor">
+  <button class="btn-search" data-ng-click="mainSearch(q)"></button>
+  <button class="btn-filter" data-ng-click="toggleCat()"></button>
+ 
+    
+    <div class="category-container span8" data-ng-hide="c" data-ng-animate="'animate'">
+        <ul class="nav">
+          <li ><a href="#!/books/search?q=Ciências Exatas">Ciências Exatas</a></li>
+          <li ><a href="#!/books/search?q=Direito">Direito</a></li>
+          <li ><a href="#!/books/search?q=Informática">Informatica</a></li>
+          <li ><a href="#!/books/search?q=Filosofia">Filosofia</a></li>
+          <li ><a href="#!/books/search?q=Dicionários">Dicionários</a></li>
+          <li ><a href="#!/books/search?q=Arte">Arte</a></li>
+          <li ><a href="#!/books/search?q=Saúde">Saúde</a></li>
+          <li ><a href="#!/books/search?q=Negócios">Negócios</a></li>
+          <li ><a href="#!/books/search?q=Ciências Humanas">Ciências Humanas</a></li>
+          <li ><a href="#!/books/search?q=Apostila">Apostila</a></li>
+          <li ><a href="#!/books/search?q=Engenharia">Engenharia</a></li>
+          <li ><a href="#!/books/search?q=Outros">Outros</a></li>
+  
+        </ul>
+
+    </div>
+
+</div>
+<section>
+  <div class="books">
+    <h2>Meus Livros</h2>
+    <br /><br />
+    <ul class="thumbnails" data-ng-controller="UsersController" data-ng-init="me()">
+    
+   
+    <li class="span2  well" data-ng-repeat="book in bookList | filter:q">
+      <div class="thumbnail thumb-li">
+         <a href="#" data-ng-click="remove(book)" class="btn btn-danger btn-mini pull-left" style="background: #ff0000 !important"><i class="icon icon-white icon-remove"></i></a>
+          <div class="status {{ book.status }}" popover="{{ book.status }}" popover-placement="bottom" popover-trigger="mouseenter"></div>
+          <img src="{{book.img}}" alt="" width="140" height="190" align="center">
+          <h5><a data-ng-href="#!/books/{{book._id}}">{{book.title}}</a></h5>
+          <p >
+            @ {{book.user.name}}
+            <br />
+            <strong style="color: #00bb22">{{ book.school }}</strong>
+
+          </p>
+
+      </div>
+    </li>
+  </ul>
+  </div>
+</section>
